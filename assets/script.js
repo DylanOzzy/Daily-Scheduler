@@ -1,14 +1,13 @@
 const dayjsObject = dayjs();
-var todaysDate = $('#currentDay');
+const time = $(".time");
+var hour = dayjsObject.hour();
 
 function displayCurrentTime() {
+  var todaysDate = $('#currentDay');
   todaysDate.text(dayjsObject.format('hh:mm A dddd, MMMM DD, YYYY '));
 }
 
-displayCurrentTime();
-
 $(document).ready(function () {
-  // Load data from local storage and populate the corresponding textarea
   $('.todoItemsSet').each(function () {
     const element = $(this);
     const key = element.data('id');
@@ -18,7 +17,6 @@ $(document).ready(function () {
     }
   });
   
-  // Save data to local storage when the save button is clicked
   $('.saveBtn').on('click', function () {
     const element = $(this).siblings('.todoItemsSet');
     const key = element.data('id');
@@ -27,19 +25,21 @@ $(document).ready(function () {
   });
 });
 
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-
-  const hour = dayjsObject.hour();
-  $('.time-block').each(function () {
-
+$(document).ready(function () {
+  $(".time-block").each(function () {
+    let thisText = parseInt($(this).text());
+    let timeValue = thisText + (thisText < 9 ? 12 : 0);
+    if (timeValue > hour) {
+      $(this).addClass("future");
+    } else if (timeValue === hour) {
+      $(this).addClass("present");
+    } else {
+      $(this).addClass("past");
+    }
   });
+});
 
-
-
+displayCurrentTime();
 
 
 
