@@ -32,7 +32,7 @@ I made this webpage to demonstrate my current level of knowledge with Javascript
 
  [Daily-Planner](https://dylanozzy.github.io/Daily-Scheduler/)
  
- ![Daily-Planner](assets/images\Daily-Planner-SS.png)
+ ![Daily-Planner](/assets/images/Daily-Planner-SS.png)
 
 
 ## License
